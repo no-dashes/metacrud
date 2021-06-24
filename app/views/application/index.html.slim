@@ -1,0 +1,12 @@
+h1 LISTING of #{klassname.pluralize}
+
+table
+  thead
+    - index_attribute_names.each do |nam|
+      th = klass.human_attribute_name nam
+  tbody
+    - current_objects.each do |obj|
+      tr
+        - index_attribute_names.each do |nam|
+          td = obj.send(nam)
+
