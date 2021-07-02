@@ -1,0 +1,14 @@
+h1 Show
+
+dl
+  - show_attribute_names.each do |nam|
+    - if nam.is_a?(Hash)
+      - nam.each do |k,v|
+        dt = k
+        dd = instance_exec current_object, &v
+    - else
+      dt = nam
+      dd = current_object.send(nam)
+
+=> link_to "« index", current_index_url
+= link_to "edit", [:edit, current_object]

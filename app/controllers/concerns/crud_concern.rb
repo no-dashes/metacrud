@@ -99,6 +99,8 @@ module CrudConcern
     by.helper_method :current_object
     by.helper_method :current_objects
     by.helper_method :index_attribute_names
+    by.helper_method :show_attribute_names
+    by.helper_method :current_index_url
   end
 
 end

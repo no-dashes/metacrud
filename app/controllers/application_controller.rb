@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
 
-  def self.crudify(index_attributes: nil, only: nil, permit_params: nil)
+  def self.crudify(index_attributes: nil, show_attributes: nil, only: nil, permit_params: nil)
     include CrudConcern
     if index_attributes
-      define_method :index_attribute_names do
-        index_attributes
+      class_eval <<-RUBY, __FILE__, __LINE__ + 1
+        def index_attribute_names()
+          #{index_attributes}
+        end
+      RUBY
+    end
+    if show_attributes
+      define_method :show_attribute_names do
+        show_attributes
       end
     end
     actions = %i[index show edit new destroy create update]

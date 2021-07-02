@@ -9,4 +9,6 @@ table
       tr
         - index_attribute_names.each do |nam|
           td = obj.send(nam)
+        td
+          = link_to "Show", obj
 
